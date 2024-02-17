@@ -1,0 +1,23 @@
+name: Docker Build and Compose
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build Docker images
+      run: |
+        cd backend
+        docker-compose build
+
+    - name: Log in to Docker registry
+      run: docker login -u 8060268 -p dockerpass
+        docker-compose push
