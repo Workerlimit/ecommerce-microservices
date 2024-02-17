@@ -20,4 +20,6 @@ jobs:
 
     - name: Log in to Docker registry
       run: docker login -u 8060268 -p dockerpass
-        docker-compose push
+
+    - name: Push Docker images to registry
+      run: docker-compose push
